@@ -40,4 +40,12 @@ public class ProductRepository {
         return null;
     }
 
+    public void delete(String productId) {
+        for(int i=0; i<productData.size(); i++){
+            if(productData.get(i).getProductId().equals(productId)){
+                productData.remove(i);
+            }
+        }
+    }
+
 }
