@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.util.Iterator;
 
@@ -55,7 +54,7 @@ class ProductRepositoryTest {
         productRepository.create(product2);
 
         Iterator<Product> iterator = productRepository.findAll();
-        Assert.assertTrue(iterator.hasNext());
+        assertTrue(iterator.hasNext());
         Product foundProduct = iterator.next();
         assertEquals(product1.getProductId(), foundProduct.getProductId());
         foundProduct = iterator.next();
