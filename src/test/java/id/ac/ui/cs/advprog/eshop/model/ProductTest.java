@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ProductTest {
     Product product;
+
     @BeforeEach
     void setUp() {
         this.product = new Product();
@@ -27,5 +28,17 @@ class ProductTest {
     @Test
     void testGetProductQuantity() {
         assertEquals(100, this.product.getProductQuantity());
+    }
+
+    @Test
+    void testSetProductName() {
+        this.product.setProductName("Sampo Cap Agus");
+        assertEquals("Sampo Cap Agus", this.product.getProductName());
+    }
+
+    @Test
+    void testSetProductQuantity() {
+        this.product.setProductQuantity(50);
+        assertEquals(50, this.product.getProductQuantity());
     }
 }
