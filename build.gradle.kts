@@ -5,6 +5,7 @@ val junitJupiterVersion = "5.9.1"
 
 plugins {
 	java
+	jacoco
 	id("org.springframework.boot") version "3.4.2"
 	id("io.spring.dependency-management") version "1.1.7"
 }
@@ -54,4 +55,15 @@ tasks.register<Test>("unitTest"){
 
 tasks.withType<Test>().configureEach {
 	useJUnitPlatform()
+}
+
+tasks.test {
+	filter {
+		excludeTestsMatching("*FunctionalTest")
+	}
+	finalizedBy(tasks.jacocoTestReport)
+}
+
+tasks.jacocoTestReport {
+	dependsOn(tasks.test)
 }

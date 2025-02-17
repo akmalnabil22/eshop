@@ -18,7 +18,7 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 @ExtendWith(SeleniumJupiter.class)
-class CreateProductTest {
+class CreateProductFunctionalTest {
     @LocalServerPort
     private  int serverPort;
 
