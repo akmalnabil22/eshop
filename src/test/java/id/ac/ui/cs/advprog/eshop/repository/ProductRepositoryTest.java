@@ -70,6 +70,11 @@ class ProductRepositoryTest {
         Product product2 = new Product();
         product2.setProductName("Sampo Cap Kuda");
         product2.setProductQuantity(50);
+
+        // Test null
+        Product product3 = productRepository.update("1", product2);
+        assertNull(product3);
+
         productRepository.update(product1.getProductId(), product2);
         Iterator<Product> iterator = productRepository.findAll();
         Product foundProduct = iterator.next();
@@ -79,10 +84,21 @@ class ProductRepositoryTest {
     @Test
     void testDelete(){
         Product product1 = new Product();
-        productRepository.create(product1);
         Iterator<Product> iterator = productRepository.findAll();
+        productRepository.create(product1);
+        productRepository.delete("1");
         assertTrue(iterator.hasNext());
         productRepository.delete(product1.getProductId());
         assertFalse(iterator.hasNext());
     }
+    @Test
+    void testFindByProductId(){
+        Product product1 = new Product();
+        productRepository.create(product1);
+        Product productFound = productRepository.findProduct(product1.getProductId());
+        assertEquals(productFound, product1);
+        productFound = productRepository.findProduct("1");
+        assertNull(productFound);
+    }
+
 }
