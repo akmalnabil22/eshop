@@ -45,6 +45,7 @@ public class ProductController {
 
     @PostMapping("/edit/{id}")
     public String editProductPost(@PathVariable String id, @ModelAttribute Product product, Model model){
+        product.setProductId(id);
         service.update(id, product);
         return "redirect:/product/list";
     }
