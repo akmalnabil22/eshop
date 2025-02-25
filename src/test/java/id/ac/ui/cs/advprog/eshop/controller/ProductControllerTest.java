@@ -1,11 +1,13 @@
 package id.ac.ui.cs.advprog.eshop.controller;
 
 import id.ac.ui.cs.advprog.eshop.model.Product;
+import id.ac.ui.cs.advprog.eshop.repository.ProductRepository;
 import id.ac.ui.cs.advprog.eshop.service.CarService;
 import id.ac.ui.cs.advprog.eshop.service.ProductService;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import  org.springframework.beans.factory.annotation.Autowired;
@@ -32,13 +34,11 @@ class ProductControllerTest {
     @SuppressWarnings("removal")
     @MockBean
     private ProductService productService;
+
+    @SuppressWarnings("removal")
+    @MockBean
+    private ProductRepository productRepository;
     private static Gson gson;
-
-    @MockBean
-    private CarController carController;
-
-    @MockBean
-    private CarService carService;
 
     @BeforeAll
     static void setUp() {
