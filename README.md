@@ -1,5 +1,9 @@
 [Link Deployment](https://independent-aubrie-eshop-mal-7318b5e0.koyeb.app/)
 
+[Modul 1](#modul-1)  
+[Modul 2](#modul-2)  
+[Modul 3](#modul-3)
+
 # Modul 1
 ## Reflection 1
 Pada kode saya, saya sudah menerapkan *meaningful names* agar variabel yang ada pada kode mudah dimengerti. 
@@ -30,4 +34,30 @@ tidak perlu menambahkan modifier public sehingga untuk memperbaikinya hanya perl
 2. Kode yang saya buat sudah mengimplementasikan CI/CD. Setiap kali commit dilakukan ke online repository akan dilakukan 
 testing dan code scanning untuk memastikan kode sudah berjalan dengan benar yang berarti sudah mengimplementasikan CI. 
 Kode juga akan secara otomatis di deploy melalui Platform Koyeb setiap kali ada perubahan pada repository yang berarti sudah 
-mengimplementasikan CD.
+mengimplementasikan CD.  
+
+# Modul 3  
+1. - Implementasi SRP: Saya memindahkan `CarController` dari `ProductController` dan tidak extend `ProductController` karena 
+masing-masing Controller memiliki peran masing-masing.
+    - Implementasi OCP: Terdapat class `ServiceImpl` yang mengimplement interface `Service`. Jika kita ingin memodifikasi implementasi
+   method interface `Service`, kita hanya perlu mengubah implementasi method pada class `ServiceImpl` tanpa perlu mengubah `Service`.
+    - Implementasi LSP: Pada class `Controller`, service yang digunakan adalah objek dari `Service`, bukan `ServiceImpl`, yang
+   menunjukkan bahwa class `ServiceImpl` bisa digantikan dengan `Service`.
+    - Implementasi ISP: Service untuk Car dan Product memiliki interface yang berbeda sesuai dengan kebutuhannya masing-masing.
+    - Implementasi DIP: Meskipun terdapat class `ServiceImpl` yang mengimplementasikan interface `Service`, tetapi objek service yang digunakan
+   di class `Controller` adalah objek dari interface `Service`.
+
+
+2. Dengan mengimplementasikan SOLID, kode yang sudah kita buat lebih mudah untuk di maintain. Contohnya pada CarController
+dan ProductController. Jika terdapat error pada CarController maka ProductController tidak akan terpengaruh. Lalu, jika kita kita 
+ingin mengubah sesuatu pada CarController maka kita akan yakin bahwa perubahan tersebut tidak akan mempengaruhi ProductController. Lalu, dengan
+menggunakan objek interface `Service` pada `Controller` kita menerapkan abstraction sehingga client akan lebih fokus terhadap
+karakteristik dari service dibanding implementasinya. Jadi, penerapan prinsip SOLID akan sangat membantu pekerjaan kita.
+
+
+3. Jika kita tidak mengimplementasikan SOLID, akan muncul berbagai masalah. Contohnya jika kita tidak memisahkan `CarController`
+dan `ProductController`. Misal kita sedang melakukan testing untuk `ProductController` dan kemudian terjadi error, kita akan kesulitan
+menentukan apakah error terjadi di `ProductController` atau `CarController`. Masalah lain muncul jika kita melakukan modifikasi
+terhadap `ProductController`. Jika terjadi error pada class `ProductController`, maka proses `CarController` juga akan terganggu. 
+Lalu jika kita menggunakan objek `ServiceImpl` pada `Controller`, maka kita harus fokus pada implementasi dari method `Service`
+sehingga mengganggu Readability dari kode kita.
