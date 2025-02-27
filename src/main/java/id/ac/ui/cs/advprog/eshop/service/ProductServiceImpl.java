@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class ProductServiceImpl implements ProductService {
 
     @Autowired
-    private ProductRepository productRepository = new ProductRepository();
+    private ProductRepository productRepository;
 
     @Override
     public Product create(Product product) {
