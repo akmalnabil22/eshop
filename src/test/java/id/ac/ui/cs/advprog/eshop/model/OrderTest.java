@@ -72,6 +72,6 @@ class OrderTest {
     void testSetStatusToInvalidStatus() {
         Order order = new Order("6cd6dfe9-282a-42a0-8921-891c25b66e78",
                 this.products, 1708560000L, "Safira Sudrajat");
-        assertThrows(IllegalArgumentException.class, () -> order.setStatus("MEOW"))
+        assertThrows(IllegalArgumentException.class, () -> order.setStatus("MEOW"));
     }
 }
