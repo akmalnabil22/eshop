@@ -35,7 +35,7 @@ public class OrderRepositoryTest {
                 products, 1708560000L, "Safira Sudrajat");
         orders.add(order2);
         Order order3 = new Order("6352f9de-1b2a-47ab-b092-810d8cd61363",
-                products, 1708560000L, "Safira Sudrajat");
+                products, 1708560000L, "Bambang Sudrajat");
         orders.add(order3);
     }
     @Test
