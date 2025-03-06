@@ -1,6 +1,9 @@
 package id.ac.ui.cs.advprog.eshop.model;
 
 import java.util.Map;
+
+import enums.PaymentMethod;
+import enums.PaymentStatus;
 import lombok.Setter;
 import lombok.Getter;
 
@@ -9,7 +12,6 @@ public class Payment {
 
     String id;
     String method;
-    @Setter
     String status;
     Map<String, String> paymentData;
 
@@ -18,19 +20,19 @@ public class Payment {
         this.method = method;
         this.paymentData = paymentData;
 
-        if (method.equals("VOUCHER_CODE")) {
+        if (method.equals(PaymentMethod.VOUCHER_CODE.getValue())) {
             if (isVoucherValid(paymentData.get("voucherCode"))) {
-                this.status = "SUCCESS";
+                this.status = PaymentStatus.SUCCESS.getValue();
             } else {
-                this.status = "REJECTED";
+                this.status = PaymentStatus.REJECTED.getValue();
             }
         }
 
-        if (method.equals("BANK_TRANSFER")) {
+        if (method.equals(PaymentMethod.BANK_TRANSFER.getValue())) {
             if (isBankTransferValid(paymentData)) {
-                this.status = "SUCCESS";
+                this.status = PaymentStatus.SUCCESS.getValue();
             } else {
-                this.status = "REJECTED";
+                this.status = PaymentStatus.REJECTED.getValue();
             }
         }
     }
