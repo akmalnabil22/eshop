@@ -17,7 +17,7 @@ public class Payment {
 
     Payment(String id, String method, Map<String, String> paymentData) {
         this.id = id;
-        this.method = method;
+        setMethod(method);
         this.paymentData = paymentData;
 
         if (method.equals(PaymentMethod.VOUCHER_CODE.getValue())) {
@@ -34,6 +34,14 @@ public class Payment {
             } else {
                 this.status = PaymentStatus.REJECTED.getValue();
             }
+        }
+    }
+
+    private void setMethod(String method) {
+        if(PaymentMethod.contains(method)) {
+            this.method = method;
+        } else {
+            throw new IllegalArgumentException("Invalid method");
         }
     }
 
