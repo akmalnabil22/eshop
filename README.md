@@ -3,6 +3,7 @@
 [Modul 1](#modul-1)  
 [Modul 2](#modul-2)  
 [Modul 3](#modul-3)
+[Modul 4](#modul-4)
 
 # Modul 1
 ## Reflection 1
@@ -61,3 +62,15 @@ menentukan apakah error terjadi di `ProductController` atau `CarController`. Mas
 terhadap `ProductController`. Jika terjadi error pada class `ProductController`, maka proses `CarController` juga akan terganggu. 
 Lalu jika kita menggunakan objek `ServiceImpl` pada `Controller`, maka kita harus fokus pada implementasi dari method `Service`
 sehingga mengganggu Readability dari kode kita.
+
+## Modul 4
+1. Menurut saya, TDD flow cukup menantang ketika dilakukan untuk pertama kali. Saya cukup bingung menentukan test apa saja
+   yang perlu ditambahkan. Tetapi ketika diberikan sebuah ketentuan bagaimana program akan berjalan seperti di modul ini, TDD flow
+   menjadi cukup bisa dimengerti. Saya bisa membuat test case berdasarkan ketentuan-ketentuan yang diminta. Salah satu tantangan dalam
+   TDD menurut saya adalah menentukan unhappy path karena mungkin saja terdapat edge case yang terlewatkan yang mungkin bisa saja
+   menyebabkan program error.
+
+
+2. Saya sudah menerapkan beberapa FIRST principle. Test case yang saya buat berjalan dengan cepat, repeatable, dan self-validating. Tetapi,
+   ada test case yang masih bergantung pada test case lain. Lalu, terdapat beberapa unhappy path yang belum dicover pada test case
+   yang saya buat.
