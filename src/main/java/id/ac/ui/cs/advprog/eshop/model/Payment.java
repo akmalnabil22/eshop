@@ -12,10 +12,11 @@ public class Payment {
 
     String id;
     String method;
+    @Setter
     String status;
     Map<String, String> paymentData;
 
-    Payment(String id, String method, Map<String, String> paymentData) {
+    public Payment(String id, String method, Map<String, String> paymentData) {
         this.id = id;
         setMethod(method);
         this.paymentData = paymentData;
@@ -37,7 +38,7 @@ public class Payment {
         }
     }
 
-    private void setMethod(String method) {
+    public void setMethod(String method) {
         if(PaymentMethod.contains(method)) {
             this.method = method;
         } else {
