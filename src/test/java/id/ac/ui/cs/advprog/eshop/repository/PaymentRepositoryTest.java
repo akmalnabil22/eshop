@@ -67,7 +67,7 @@ class PaymentRepositoryTest {
             paymentRepository.save(payment, order);
         }
 
-        Payment payment = paymentRepository.GetPayment(payments.get(1).getId());
+        Payment payment = paymentRepository.getPayment(payments.get(1).getId());
         assertEquals(payment.getId(), payments.get(1).getId());
         assertEquals(payment.getPaymentData(), payments.get(1).getPaymentData());
         assertEquals(payment.getMethod(), payments.get(1).getMethod());
@@ -82,7 +82,7 @@ class PaymentRepositoryTest {
             paymentRepository.save(payment, order);
         }
 
-        Payment payment = paymentRepository.GetPayment("INVALID-ID");
+        Payment payment = paymentRepository.getPayment("INVALID-ID");
         assertNull(payment);
     }
 
